@@ -104,9 +104,9 @@ body {
 /* --- Product Grid --- */
 .book-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    /* 2 Columns on mobile */
-    gap: 12px;
+    grid-template-columns: 1fr;
+    /* 1 Column on mobile (User Request) */
+    gap: 20px;
     padding: 20px 0;
 }
 
