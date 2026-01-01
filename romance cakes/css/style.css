@@ -1,0 +1,481 @@
+/* 
+   Romance Cakes - Clean & Functional Theme (Stable)
+   Focus: usability, readability, speed.
+*/
+
+:root {
+    --primary-color: #5D4037;
+    /* Chocolate */
+    --accent-color: #D81B60;
+    /* Pink */
+    --bg-color: #f5f5f5;
+    /* Light Gray Background */
+    --card-bg: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+
+    --font-heading: 'Dancing Script', cursive;
+    --font-body: 'Outfit', sans-serif;
+
+    --radius: 8px;
+    --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding-bottom: 60px;
+}
+
+/* --- Layout --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* --- Header --- */
+.header {
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.nav-list {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.nav-list a.active {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.hero-text {
+    display: none;
+    /* Keep simple on mobile */
+    text-align: center;
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 5px;
+}
+
+@media (min-width: 768px) {
+    .hero-text {
+        display: block;
+    }
+}
+
+/* --- Product Grid --- */
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 Columns on mobile */
+    gap: 12px;
+    padding: 20px 0;
+}
+
+@media (min-width: 768px) {
+    .book-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 24px;
+    }
+}
+
+/* --- Cards --- */
+.book-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 10px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* No opacity animations - ensure visibility */
+}
+
+.book-image-container {
+    width: 100%;
+    aspect-ratio: 1;
+    /* Square */
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background: #eee;
+}
+
+.book-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.book-info h3 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    line-height: 1.3;
+    /* Clean line clamp */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.book-author {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.book-footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.book-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.buy-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+}
+
+.buy-btn:active {
+    opacity: 0.9;
+}
+
+/* --- Admin Panel Layout --- */
+.main-dashboard {
+    background-color: #f7f9fc;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 900px) {
+    .main-dashboard {
+        flex-direction: row;
+    }
+
+    .sidebar {
+        display: block;
+        /* Show on Desktop */
+        width: 260px;
+        background: white;
+        border-right: 1px solid #eaeaea;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        padding: 20px;
+    }
+}
+
+.sidebar {
+    display: none;
+    /* Hide on mobile by default */
+}
+
+.sidebar-header h3 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --- Admin Content Area --- */
+.admin-content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+}
+
+.admin-actions {
+    margin: 20px 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-btn {
+    background: linear-gradient(135deg, var(--accent-color), #ad1457);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(216, 27, 96, 0.3);
+    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.add-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* --- Admin Table (Desktop) --- */
+.table-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    /* For smooth corners */
+    border: 1px solid #eee;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table thead {
+    background: #fff5f8;
+    /* Very light pink header */
+    border-bottom: 2px solid #ffeef2;
+}
+
+.data-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+}
+
+.data-table td {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+    color: #444;
+}
+
+/* Image in Table */
+.data-table td img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #eee;
+}
+
+/* Actions Column */
+.action-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.edit-btn {
+    color: #2196F3;
+}
+
+.delete-btn {
+    color: #F44336;
+}
+
+.action-btn:hover {
+    background: #f5f5f5;
+}
+
+
+/* --- Mobile Responsive Table (Card View) --- */
+@media (max-width: 768px) {
+    .table-container {
+        background: transparent;
+        box-shadow: none;
+        border: none;
+    }
+
+    .data-table thead {
+        display: none;
+    }
+
+    .data-table tr {
+        display: block;
+        background: white;
+        margin-bottom: 15px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        padding: 15px;
+        border: 1px solid #f0f0f0;
+    }
+
+    .data-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: none;
+        padding: 8px 0;
+        border-bottom: 1px solid #f9f9f9;
+    }
+
+    .data-table td:last-child {
+        border-bottom: none;
+        padding-top: 15px;
+        justify-content: flex-end;
+        gap: 15px;
+    }
+
+    .data-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #888;
+        font-size: 0.9rem;
+    }
+
+    /* Mobile Image Fix */
+    .data-table td[data-label="Image"] {
+        justify-content: center;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .data-table td[data-label="Image"] img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* --- Modals --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    padding: 24px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    /* Prevent zoom */
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-actions button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.save-btn {
+    background: var(--accent-color);
+    color: white;
+}
+
+.cancel-btn {
+    background: #e0e0e0;
+    color: #333;
+}
+
+/* Utilities */
+.hidden {
+    display: none !important;
+}
+
+.loading-spinner {
+    text-align: center;
+    padding: 40px;
+}
+
+.error-message {
+    padding: 20px;
+    color: red;
+    text-align: center;
+}
